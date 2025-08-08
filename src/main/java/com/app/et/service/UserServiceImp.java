@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.app.et.entity.User;
+import com.app.et.exception.UserNotFound;
 import com.app.et.repository.UserRepository;
 import com.app.et.util.PasswordEncoder;
 
@@ -37,6 +38,12 @@ public class UserServiceImp implements UserService {
 	@Override
 	public boolean login(String username, String password) {
 		return userRepository.findByUsernameAndPassword(username, passwordEncoder.encodePassword(password)).isPresent();
+	}
+
+	@Override
+	public User findByUserName(String username) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFound("User Not Registered"));
 	}
 
 }

@@ -6,4 +6,6 @@ import com.app.et.entity.Expense;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
+	Expense findByEid(Integer eid);
+
 }

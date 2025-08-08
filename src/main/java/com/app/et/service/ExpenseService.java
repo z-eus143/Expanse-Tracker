@@ -1,8 +1,15 @@
 package com.app.et.service;
 
-import org.springframework.stereotype.Service;
+import com.app.et.entity.Expense;
 
-@Service
-public class ExpenseService {
+public interface ExpenseService {
+
+	Integer saveExpense(Expense expense);
+
+	Expense findByEid(Integer eid);
+
+	String updateExpense(Expense expense);
+
+	String deleteExpense(Expense expense);
 
 }
