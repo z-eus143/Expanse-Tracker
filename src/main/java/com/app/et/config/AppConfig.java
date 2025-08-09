@@ -6,16 +6,16 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 @Configuration
 public class AppConfig {
 
 	@Bean
 	DataSource dataSource() {
-		Dotenv dotenv = Dotenv.load();
-
-		return DataSourceBuilder.create().url(dotenv.get("DATABASE_URL")).username(dotenv.get("PGUSER"))
-				.password(dotenv.get("PGPASSWORD")).driverClassName("org.postgresql.Driver").build();
+		return DataSourceBuilder.create()
+				.url(System.getenv("DB_URL"))
+				.username(System.getenv("DB_USER"))
+				.password(System.getenv("DB_PASSWORD"))
+				.driverClassName("org.postgresql.Driver")
+				.build();
 	}
 }
