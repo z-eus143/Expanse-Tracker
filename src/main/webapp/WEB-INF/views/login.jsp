@@ -142,7 +142,10 @@
     <div class="switch-link">
         Don't have an account? <a href="register">Register here</a>
     </div>
-	<a href="/" class="back-link">⬅ Back to Home</a>
+	<div class="switch-link">
+	    Forget Password? <a href="passwordreset">Reset Password</a>
+	</div>
+	<a href="/" class="back-link">⬅ Back to Welcome Page</a>
 </div>
 
 </body>

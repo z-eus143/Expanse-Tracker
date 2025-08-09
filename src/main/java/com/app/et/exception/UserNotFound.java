@@ -13,7 +13,7 @@ public class UserNotFound extends RuntimeException {
 
 	@Override
 	public String getMessage() {
-		return this.getMessage();
+		return message;
 	}
 
 }

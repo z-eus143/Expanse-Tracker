@@ -37,13 +37,16 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public boolean login(String username, String password) {
-		return userRepository.findByUsernameAndPassword(username, passwordEncoder.encodePassword(password)).isPresent();
+		return userRepository
+				.findByUsernameOrEmailAndPassword(username, username, passwordEncoder.encodePassword(password))
+				.isPresent();
 	}
 
 	@Override
 	public User findByUserName(String username) {
 		// TODO Auto-generated method stub
-		return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFound("User Not Registered"));
+		return userRepository.findByUsernameOrEmail(username, username)
+				.orElseThrow(() -> new UserNotFound("User Not Registered"));
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.app.et.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +49,11 @@ public class ExpenseTrackerController {
 	public String registerPage(Model model) {
 		model.addAttribute("user", new User());
 		return "register";
+	}
+
+	@GetMapping("/passwordreset")
+	public String passwordresetPage(Model model) {
+		return "passwordreset";
 	}
 
 	// Login handler
@@ -130,6 +137,22 @@ public class ExpenseTrackerController {
 
 		model.addAttribute("msg", message);
 		model.addAttribute("exps", user.getExpenses());
+		return "home";
+	}
+
+	@GetMapping("/filterExpenses")
+	public String filter(HttpServletRequest request, Model model) {
+		String fromDate = request.getParameter("fromDate");
+		String toDate = request.getParameter("toDate");
+
+		User user = getLoggedInUser(request);
+
+		List<Expense> expenses = expenseService.filter(user, fromDate, toDate);
+
+		model.addAttribute("exps", expenses);
+		model.addAttribute("from", fromDate);
+		model.addAttribute("to", toDate);
+
 		return "home";
 	}
 

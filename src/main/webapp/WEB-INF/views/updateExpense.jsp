@@ -105,8 +105,7 @@
     <div class="expense-form-container">
         <h2>Update Expense</h2>
         <form action="/updateexpense" method="post">
-            <label for="expenseId">Expense Id:</label>
-            <input type="text" id="expenseId" name="eid" readonly value="${exp.eid}" required />
+            <input type="hidden" id="expenseId" name="eid" readonly value="${exp.eid}" required />
 
             <label for="expenseName">Expense Name:</label>
             <input type="text" id="expenseName" name="name" value="${exp.name}" required />

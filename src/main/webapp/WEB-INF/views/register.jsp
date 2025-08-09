@@ -74,6 +74,19 @@
 			transform: scale(1.03);
         }
 
+		.message {
+		            text-align: center;
+		            margin-top: 15px;
+		            color: green;
+		            font-weight: 500;
+		        }
+		                
+		        .error {
+		            color: red;
+		            text-align: center;
+		            font-weight: 500;
+		        }
+				
         .switch-link {
             text-align: center;
             margin-top: 18px;
@@ -117,6 +130,10 @@
 
         <button type="submit">Register</button>
     </form>		
+	<!-- Success message -->
+	    <div class="message">${succmsg}</div>
+	    <!-- Error message -->
+	    <div class="error">${errmsg}</div>
     <div class="switch-link">
         Already have an account? <a href="login">Login here</a>
     </div>

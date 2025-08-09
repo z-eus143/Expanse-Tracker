@@ -16,7 +16,8 @@ public class SessionInterceptor implements HandlerInterceptor {
 
 		// Allow public pages without login
 		String uri = request.getRequestURI();
-		if (uri.equals("/") || uri.startsWith("/login") || uri.startsWith("/register") || uri.startsWith("/logout")) {
+		if (uri.equals("/") || uri.startsWith("/login") || uri.startsWith("/register") || uri.startsWith("/logout")
+				|| uri.startsWith("/passwordreset")) {
 			return true;
 		}
 
